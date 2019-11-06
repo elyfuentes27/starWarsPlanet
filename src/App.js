@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from 'react';
+import Navbar from './component/Navbar';
+import { useApi } from './api/useApi';
+
+import './styles.scss';
+import MovieList from './component/MovieList';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+	const [starWarsMovies] = useApi('https://swapi.co/api/films', []);
+	const [planetList, doFetch] = useApi();
 
+	console.log('response :', starWarsMovies);
+	return (
+		<Fragment>
+			<Navbar />
+			<MovieList list={starWarsMovies} planetList={planetList} doFetch={doFetch} />
+		</Fragment>
+	);
+}
 export default App;
