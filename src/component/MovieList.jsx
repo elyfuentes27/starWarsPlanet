@@ -6,8 +6,7 @@ import axios from 'axios';
 import MobilePlanetList from './mobile/MobilePlanetList';
 const { Panel } = Collapse;
 
-const MovieList = ({ list, planetList, doFetch }) => {
-	console.log('LIST', list);
+const MovieList = ({ list }) => {
 	const [formattedList, setFormattedList] = useState([]);
 	useEffect(() => {
 		if (list.data.results) {
@@ -31,6 +30,7 @@ const MovieList = ({ list, planetList, doFetch }) => {
 	}, []);
 
 	const [selectedMovie, setSelectedMovie] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	const onChange = index => {
 		setSelectedMovie([]);
@@ -38,12 +38,14 @@ const MovieList = ({ list, planetList, doFetch }) => {
 			const foundMovie = list.data.results.find(i => i.episode_id.toString() === index.toString());
 			return Promise.all(
 				foundMovie.planets.map(async url => {
+					setLoading(true);
 					try {
 						const result = await axios(url);
 						setSelectedMovie(prevMovies => [...prevMovies, result.data]);
 					} catch (err) {
 						console.error(err);
 					}
+					setLoading(false);
 				})
 			);
 		}
@@ -61,7 +63,7 @@ const MovieList = ({ list, planetList, doFetch }) => {
 							<Collapse accordion onChange={onChange.bind(this)}>
 								{formattedList.map(i => (
 									<Panel header={i.title} key={i.id}>
-										<PlanetList selectedMovie={selectedMovie} />
+										<PlanetList selectedMovie={selectedMovie} loading={loading} />
 									</Panel>
 								))}
 							</Collapse>
@@ -77,7 +79,7 @@ const MovieList = ({ list, planetList, doFetch }) => {
 							<Collapse accordion onChange={onChange.bind(this)}>
 								{formattedList.map(i => (
 									<Panel header={i.title} key={i.id}>
-										<MobilePlanetList selectedMovie={selectedMovie} />
+										<MobilePlanetList selectedMovie={selectedMovie} loading={loading} />
 									</Panel>
 								))}
 							</Collapse>
