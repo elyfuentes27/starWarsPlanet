@@ -1,0 +1,87 @@
+html,
+body,
+div,
+nav{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  font-family: 'Star Jedi', arial;
+  text-shadow: 1px 1px 1px #aaa;
+  
+}
+.navbar {
+  align-items: center;
+  border-bottom: 1px solid rgb(221, 221, 221);
+  display: flex;
+  height: 70px;
+  justify-content: space-between;
+  padding: 0 3%;
+  -webkit-box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
+  -moz-box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
+  box-shadow: 0px 2px 15px -8px rgba(0, 0, 0, 0.42);
+}
+
+.dark-mode__toggle {
+  background: papayawhip;
+  border-radius: 50px;
+  border: 1px solid black;
+  height: 20px;
+  position: relative;
+  width: 40px;
+}
+
+.toggle {
+  background: #f68819;
+  border-radius: 50px;
+  height: 18px;
+  left: 0;
+  position: absolute;
+  transition: 0.2s;
+  width: 20px;
+}
+
+.toggled {
+  left: 18px;
+}
+
+
+.ant-collapse-item .filter-head::after {
+    content: "\F067";
+    color: #979898;
+    padding-left: 15px;
+    top: 15px;
+    position: absolute;
+    right: 0;
+}
+.dark-mode {
+  color: #fff;
+  background: #000 url(//cssanimation.rocks/demo/starwars/images/bg.jpg);
+
+  h1 {
+    color: #fff;
+  }
+
+  .navbar {
+    background-color: #1f2022;
+    border: none;
+  }
+
+  .ant-collapse {
+    border: 1px solid #9b9c9a 
+  }
+  .ant-collapse .ant-collapse-icon-position-left {
+    color: #fff;
+    background-color: #313843 !important;
+  }
+
+  .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+    background-color: #313843 !important;
+    color: white !important;
+  }
+
+  .ant-collapse-content > .ant-collapse-content-box {
+    background-color: #9b9c9a !important;
+  }
+
+}

@@ -9,7 +9,6 @@ function App() {
 	const [starWarsMovies] = useApi('https://swapi.co/api/films', []);
 	const [planetList, doFetch] = useApi();
 
-	console.log('response :', starWarsMovies);
 	return (
 		<Fragment>
 			<Navbar />
