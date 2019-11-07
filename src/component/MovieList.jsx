@@ -4,9 +4,12 @@ import { Collapse } from 'antd';
 import PlanetList from './PlanetList';
 import axios from 'axios';
 import MobilePlanetList from './mobile/MobilePlanetList';
+import ErrorPage from './ErrorPage';
+
 const { Panel } = Collapse;
 
 const MovieList = ({ list }) => {
+	console.log('DATA', list);
 	const [formattedList, setFormattedList] = useState([]);
 	useEffect(() => {
 		if (list.data.results) {
@@ -54,38 +57,42 @@ const MovieList = ({ list }) => {
 	const isMobile = width <= 768;
 	return (
 		<Fragment>
-			{!isMobile ? (
-				<div style={{ padding: '40px 100px' }}>
-					{list.isLoading !== false ? (
-						<div> Loading...</div>
-					) : (
-						<Fragment>
-							<Collapse accordion onChange={onChange.bind(this)}>
-								{formattedList.map(i => (
-									<Panel header={i.title} key={i.id}>
-										<PlanetList selectedMovie={selectedMovie} loading={loading} />
-									</Panel>
-								))}
-							</Collapse>
-						</Fragment>
-					)}
-				</div>
+			{list.isError !== true ? (
+				!isMobile ? (
+					<div style={{ padding: '40px 100px' }}>
+						{list.isLoading !== false ? (
+							<div> Loading...</div>
+						) : (
+							<Fragment>
+								<Collapse accordion onChange={onChange}>
+									{formattedList.map(i => (
+										<Panel header={i.title} key={i.id}>
+											<PlanetList selectedMovie={selectedMovie} loading={loading} />
+										</Panel>
+									))}
+								</Collapse>
+							</Fragment>
+						)}
+					</div>
+				) : (
+					<div style={{ paddingTop: '50px' }}>
+						{list.isLoading !== false ? (
+							<div> Loading...</div>
+						) : (
+							<Fragment>
+								<Collapse accordion onChange={onChange}>
+									{formattedList.map(i => (
+										<Panel header={i.title} key={i.id}>
+											<MobilePlanetList selectedMovie={selectedMovie} loading={loading} />
+										</Panel>
+									))}
+								</Collapse>
+							</Fragment>
+						)}
+					</div>
+				)
 			) : (
-				<div>
-					{list.isLoading !== false ? (
-						<div> Loading...</div>
-					) : (
-						<Fragment>
-							<Collapse accordion onChange={onChange.bind(this)}>
-								{formattedList.map(i => (
-									<Panel header={i.title} key={i.id}>
-										<MobilePlanetList selectedMovie={selectedMovie} loading={loading} />
-									</Panel>
-								))}
-							</Collapse>
-						</Fragment>
-					)}
-				</div>
+				<ErrorPage />
 			)}
 		</Fragment>
 	);

@@ -6,10 +6,10 @@ const PlanetList = ({ selectedMovie, loading }) => {
 		<div style={{ background: '#ECECEC', padding: '30px' }}>
 			<Row gutter={16}>
 				{selectedMovie &&
-					selectedMovie.map(i =>
+					selectedMovie.map((i, index) =>
 						loading !== true ? (
 							<Col className='gutter-row' span={6} style={{ marginBottom: '30px' }}>
-								<Card title={`Planet - ${i.name}`} bordered={false} style={{ width: 300 }}>
+								<Card title={`Planet - ${i.name}`} bordered={false} style={{ width: 300 }} key={index}>
 									<p>
 										<b>Rotation Period:</b>
 										{i.rotation_period}
