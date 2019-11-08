@@ -8,7 +8,7 @@ export default function MobilePlanetList({ selectedMovie, loading }) {
 			<WingBlank size='lg'>
 				<WhiteSpace size='lg' />
 				{selectedMovie &&
-					selectedMovie.map((i, index) =>
+					selectedMovie.map(i =>
 						loading !== true ? (
 							<Card style={{ marginBottom: 10 }}>
 								<Card.Header title='Planet' extra={<span>{i.name}</span>} />

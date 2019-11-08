@@ -87,7 +87,7 @@ const MovieList = ({ list }) => {
 							<Fragment>
 								<Collapse accordion onChange={onChange}>
 									{formattedList.map(i => (
-										<Panel header={i.title} key={i.id}>
+										<Panel header={i.title} key={i.id.toString()}>
 											<MobilePlanetList selectedMovie={selectedMovie} loading={loading} />
 										</Panel>
 									))}
