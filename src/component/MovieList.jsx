@@ -82,7 +82,7 @@ const MovieList = ({ list }) => {
 				) : (
 					<div style={{ paddingTop: '50px' }}>
 						{list.isLoading !== false ? (
-							<div className='mobileLoading'>Loading...</div>
+							<div className='loading'>Loading...</div>
 						) : (
 							<Fragment>
 								<Collapse accordion onChange={onChange}>
