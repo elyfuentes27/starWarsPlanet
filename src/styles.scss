@@ -138,3 +138,19 @@ nav{
     transform: rotateX(25deg) translateZ(-2500px);
   }
 }
+
+
+.mobileLoading {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 800px;
+  color: #feda4a;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 150%;
+  font-weight: 600;
+  letter-spacing: 6px;
+  line-height: 80%;
+  perspective: 200px;
+  text-align: justify;
+}

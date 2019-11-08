@@ -9,7 +9,6 @@ import ErrorPage from './ErrorPage';
 const { Panel } = Collapse;
 
 const MovieList = ({ list }) => {
-	console.log('DATA', list);
 	const [formattedList, setFormattedList] = useState([]);
 	useEffect(() => {
 		if (list.data.results) {
@@ -61,7 +60,13 @@ const MovieList = ({ list }) => {
 				!isMobile ? (
 					<div style={{ padding: '40px 100px' }}>
 						{list.isLoading !== false ? (
-							<div> Loading...</div>
+							<section className='star-wars'>
+								<div className='crawl'>
+									<div className='title'>
+										<p>Loading ...</p>
+									</div>
+								</div>
+							</section>
 						) : (
 							<Fragment>
 								<Collapse accordion onChange={onChange}>
@@ -77,7 +82,7 @@ const MovieList = ({ list }) => {
 				) : (
 					<div style={{ paddingTop: '50px' }}>
 						{list.isLoading !== false ? (
-							<div> Loading...</div>
+							<div className='mobileLoading'>Loading...</div>
 						) : (
 							<Fragment>
 								<Collapse accordion onChange={onChange}>
