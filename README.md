@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Demo : [https://react-starwars.herokuapp.com] (https://react-starwars.herokuapp.com)
+Demo : https://react-starwars.herokuapp.com
 
 ## Available Scripts
 
