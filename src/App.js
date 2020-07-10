@@ -6,14 +6,18 @@ import './styles.scss';
 import MovieList from './component/MovieList';
 
 function App() {
-	const [starWarsMovies] = useApi('https://swapi.co/api/films', []);
-	const [planetList, doFetch] = useApi();
+  const [starWarsMovies] = useApi('https://swapi.dev/api/films', []);
+  const [planetList, doFetch] = useApi();
 
-	return (
-		<Fragment>
-			<Navbar />
-			<MovieList list={starWarsMovies} planetList={planetList} doFetch={doFetch} />
-		</Fragment>
-	);
+  return (
+    <Fragment>
+      <Navbar />
+      <MovieList
+        list={starWarsMovies}
+        planetList={planetList}
+        doFetch={doFetch}
+      />
+    </Fragment>
+  );
 }
 export default App;
