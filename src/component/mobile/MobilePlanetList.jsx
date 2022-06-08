@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, WhiteSpace, WingBlank } from 'antd-mobile';
-import 'antd-mobile';
 
 export default function MobilePlanetList({ selectedMovie, loading }) {
   return (
